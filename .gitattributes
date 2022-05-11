@@ -1,0 +1,2 @@
+pkg/play/_static/* linguist-vendored
+pkg/play/*.html linguist-vendored
