@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+  <head>
+    <title>KCL Playground</title>
+    <link rel="stylesheet" href="/static/playground/playground-full.css">
+
+    <script src="/static/playground/jquery/1.8.2/jquery.min.js"></script>
+    <script src="/static/playground/playground-full.js"></script>
+
+    <style>
+    .cm-tab {
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+      background-position: right;
+      background-repeat: no-repeat;
+    }
+    </style>
+    <script>
+    $(document).ready(function() {
+      playground({
+        'theme':        'default',
+        'codeEl':       '#code',
+        'outputEl':     '#output',
+        'runEl':        '#run',
+        'fmtEl':        '#fmt',
+        'fmtImportEl':  '#imports',
+        {{if $.Share}}
+        'shareEl':      '#share',
+        'shareURLEl':   '#shareURL',
+        {{end}}
+        'enableHistory': true
+      });
+      playgroundEmbed({
+        'theme':        'default',
+        'codeEl':       '#code',
+        {{if $.Share}}
+        'shareEl':      '#share',
+        {{end}}
+        'embedEl':      '#embed',
+        'embedLabelEl': '#embedLabel',
+        'embedHTMLEl':  '#shareURL'
+      });
+      // Avoid line wrapping.
+      var about = $('#about');
+      about.click(function(e) {
+        if ($(e.target).is('a')) {
+          return;
+        }
+        about.hide();
+      });
+      $('#homeButton').click(function() {
+        $(location).attr('href','/')
+      })
+      $('#aboutButton').click(function() {
+        if (about.is(':visible')) {
+          about.hide();
+          return;
+        }
+        about.show();
+      })
+      // Fire Google Analytics events for Run/Share button clicks.
+      if (window.trackEvent) {
+        $('#run').click(function() {
+          window.trackEvent('playground', 'click', 'run-button');
+        });
+        $('#fmt').click(function() {
+          window.trackEvent('playground', 'click', 'fmt-button');
+        });
+        $('#share').click(function() {
+          window.trackEvent('playground', 'click', 'share-button');
+        });
+      }
+    });
+    </script>
+  </head>
+  <body itemscope itemtype="http://schema.org/CreativeWork">
+    <div id="banner">
+      <div id="head" itemprop="name">KCL Playground</div>
+      <div id="controls">
+        <input type="button" value="运行" id="run">
+        <input type="button" value="格式化" id="fmt">
+        {{if $.Share}}
+        <input type="button" value="分享" id="share">
+        <input type="text" id="shareURL">
+        <label id="embedLabel">
+          <input type="checkbox" id="embed">
+          embed
+        </label>
+        {{end}}
+      </div>
+      <div id="aboutControls">
+        <input type="button" value="关于" id="aboutButton">
+      </div>
+    </div>
+    <div id="wrap">
+      <textarea itemprop="description" id="code" name="code" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">{{printf "%s" .Snippet.Body}}</textarea>
+    </div>
+    <div id="output"></div>
+    <div id="about">
+      <p><b>KCL Playground</b></p>
+
+      <a target="_blank" href="https://kusionstack.io">https://kusionstack.io</a>
+    </div>
+
+  </body>
+</html>
