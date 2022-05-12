@@ -4,7 +4,7 @@
 - `go get kusionstack.io/kcl-playground`
 - `kcl-playground` or `go run main.go`
 
-![](play.jpg)
+![](screenshot.png)
 
 ## License
 
