@@ -5,7 +5,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"os/exec"
 	"runtime"
 	"strings"
@@ -23,11 +22,9 @@ func main() {
 		openBrowser(addr)
 	}()
 
-	if len(os.Args) > 1 && os.Args[1] == "-play" {
-		play.RunPlayground(addr)
-	} else {
-		play.Run(addr)
-	}
+	play.Run(addr, &play.Option{
+		PlayMode: true,
+	})
 }
 
 func openBrowser(url string) error {

@@ -2,15 +2,7 @@
 
 package play
 
-func Run(addr string) error {
-	s := NewWebServer(nil)
-	return s.Run(addr)
-}
-
-func RunPlayground(addr string) error {
-	s := NewWebServer(&Option{
-		PlayMode:   true,
-		AllowShare: true,
-	})
+func Run(addr string, opt *Option) error {
+	s := NewWebServer(opt)
 	return s.Run(addr)
 }
