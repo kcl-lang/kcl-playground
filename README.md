@@ -1,6 +1,6 @@
 # KCL Playground
 
-- [Install kclvm](https://kusionstack.io/docs/user_docs/getting-started/install)
+- [Install KCL](https://github.com/KusionStack/KCLVM/releases)
 - `go get kusionstack.io/kcl-playground`
 - `kcl-playground` or `go run main.go`
 
