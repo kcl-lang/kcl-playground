@@ -22,7 +22,7 @@ func DefaultKclvmRuntime() KclvmRuntime {
 type cmdKclvmRuntime struct{}
 
 func (p *cmdKclvmRuntime) Fmt(workDir, kFile string) (output []byte, err error) {
-	cmd := exec.Command("kcl", "--fmt", kFile, "--fmt-output")
+	cmd := exec.Command("kcl-fmt", kFile, "-w")
 	cmd.Dir = workDir
 
 	output, err = cmd.CombinedOutput()
