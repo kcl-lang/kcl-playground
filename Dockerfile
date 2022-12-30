@@ -16,7 +16,7 @@ WORKDIR /app
 
 COPY --from=builder /app/kcl-playground .
 
-EXPOSE 80
+EXPOSE 2022
 
 
 CMD ["./kcl-playground"]
