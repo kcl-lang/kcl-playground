@@ -40,16 +40,22 @@ var edit_tmpl string
 
 var edit_Template = template.Must(template.New("playground/index.html").Parse(edit_tmpl))
 
-const edit_helloPlayground = `import kcl_plugin.hello
-
-name = "kcl"
-age = 1
-two = hello.add(1, 1)
-
-schema Person:
-    name: str = "kcl"
-    age: int = 1
-
-x0 = Person{}
-x1 = Person{age=101}
+const edit_helloPlayground = `apiVersion = "apps/v1"
+kind = "Deployment"
+metadata = {
+    name = "nginx"
+    labels.app = "nginx"
+}
+spec = {
+    replicas = 3
+    selector.matchLabels = metadata.labels
+    template.metadata.labels = metadata.labels
+    template.spec.containers = [
+        {
+            name = metadata.name
+            image = "${metadata.name}:1.14.2"
+            ports = [{ containerPort = 80 }]
+        }
+    ]
+}
 `
