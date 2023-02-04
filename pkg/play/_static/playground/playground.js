@@ -313,6 +313,7 @@ kclPlaygroundOptions({});
 
     $(opts.runEl).click(run);
     $(opts.fmtEl).click(fmt);
+    editor.on("change", run);
 
     if (opts.shareEl !== null && (opts.shareURLEl !== null || opts.shareRedirect !== null)) {
       var shareURL;
