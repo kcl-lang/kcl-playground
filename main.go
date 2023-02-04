@@ -23,7 +23,8 @@ func main() {
 	}()
 
 	play.Run(addr, &play.Option{
-		PlayMode: true,
+		PlayMode:   true,
+		AllowShare: true,
 	})
 }
 
