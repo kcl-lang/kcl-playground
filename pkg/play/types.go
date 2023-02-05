@@ -39,6 +39,7 @@ type Event struct {
 type editData struct {
 	Snippet *Snippet
 	Share   bool
+	Version string
 }
 
 type fmtResponse struct {
