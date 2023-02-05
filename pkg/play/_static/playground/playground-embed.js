@@ -50,7 +50,7 @@ function playgroundEmbed(opts) {
     if (embedding) return;
     embedding = true;
     var embeddingData = code.val();
-    $.ajax("/share", {
+    $.ajax("/-/play/share", {
       processData: false,
       data: embeddingData,
       type: "POST",
