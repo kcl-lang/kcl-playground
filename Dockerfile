@@ -19,4 +19,4 @@ COPY --from=builder /app/kcl-playground .
 EXPOSE 2022
 
 
-CMD ["./kcl-playground"]
+CMD ["./kcl-playground -deploy"]
