@@ -8,6 +8,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"kusionstack.io/kclvm-go"
 )
 
 func (p *WebServer) initEditHandler() {
@@ -32,7 +33,7 @@ func (p *WebServer) initEditHandler() {
 }
 func (p *WebServer) EditHandler(w http.ResponseWriter, r *http.Request) {
 	snip := &Snippet{Body: []byte(edit_helloPlayground)}
-	edit_Template.Execute(w, &editData{snip, p.opt.AllowShare})
+	edit_Template.Execute(w, &editData{snip, p.opt.AllowShare, string(kclvm.KclvmAbiVersion)})
 }
 
 //go:embed _edit.tmpl.html

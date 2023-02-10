@@ -263,7 +263,7 @@ kclPlaygroundOptions({});
         setBody(e.state.code);
       }
     }
-    var rewriteHistory = false;
+    var rewriteHistory = true;
     if (window.history && window.history.pushState && window.addEventListener && opts.enableHistory) {
       rewriteHistory = true;
       code[0].addEventListener('input', inputChanged);
@@ -313,6 +313,7 @@ kclPlaygroundOptions({});
 
     $(opts.runEl).click(run);
     $(opts.fmtEl).click(fmt);
+    editor.on("change", run);
 
     if (opts.shareEl !== null && (opts.shareURLEl !== null || opts.shareRedirect !== null)) {
       var shareURL;

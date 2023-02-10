@@ -18,7 +18,8 @@ func main() {
 	deploy_mode := flag.Bool("deploy", false, "Whether is deploy mode")
 	flag.Parse()
 	opt := play.Option{
-		PlayMode: true,
+		PlayMode:   true,
+		AllowShare: true,
 	}
 	if *deploy_mode {
 		play.Run(":80", &opt)
