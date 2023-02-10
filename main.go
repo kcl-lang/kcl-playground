@@ -4,6 +4,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os/exec"
 	"runtime"
@@ -14,17 +15,22 @@ import (
 )
 
 func main() {
-	addr := "localhost:2022"
-	fmt.Printf("listen at http://%s\n", addr)
-
-	go func() {
-		time.Sleep(time.Second * 2)
-		openBrowser(addr)
-	}()
-
-	play.Run(addr, &play.Option{
+	deploy_mode := flag.Bool("deploy", false, "Whether is deploy mode")
+	flag.Parse()
+	opt := play.Option{
 		PlayMode: true,
-	})
+	}
+	if *deploy_mode {
+		play.Run(":80", &opt)
+	} else {
+		addr := "localhost:2023"
+		fmt.Printf("listen at http://%s\n", addr)
+		go func() {
+			time.Sleep(time.Second * 2)
+			openBrowser(addr)
+		}()
+		play.Run(addr, &opt)
+	}
 }
 
 func openBrowser(url string) error {
