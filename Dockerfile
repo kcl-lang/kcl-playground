@@ -16,7 +16,6 @@ WORKDIR /app
 
 COPY --from=builder /app/kcl-playground .
 
-EXPOSE 2022
-
+EXPOSE 80
 
 CMD ["./kcl-playground -deploy"]
