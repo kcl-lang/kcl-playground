@@ -58,7 +58,7 @@ func (p *WebServer) compileAndRun(req *Request) (*Response, error) {
 	resp := &Response{
 		Events: []Event{
 			{
-				Message: result.First().YAMLString(),
+				Message: result.GetRawYamlResult(),
 				Kind:    "stdout",
 			},
 		},
