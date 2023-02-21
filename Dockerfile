@@ -18,4 +18,4 @@ COPY --from=builder /app/kcl-playground .
 
 EXPOSE 80
 
-CMD ["./kcl-playground -deploy"]
+CMD ["/app/kcl-playground", "-deploy"]
