@@ -83,18 +83,12 @@
         <input type="text" id="shareURL">
         {{end}}
       </div>
-      <div id="aboutControls">
-        <input type="button" value="About" id="aboutButton">
+    </div>
+    <div id="code-editor">
+      <div id="wrap">
+        <textarea itemprop="description" id="code" name="code" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">{{printf "%s" .Snippet.Body}}</textarea>
       </div>
-    </div>
-    <div id="wrap">
-      <textarea itemprop="description" id="code" name="code" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">{{printf "%s" .Snippet.Body}}</textarea>
-    </div>
-    <div id="output"></div>
-    <div id="about">
-      <p><b>KCL Playground</b></p>
-
-      <a target="_blank" href="https://kcl-lang.io">https://kcl-lang.io</a>
+      <div id="output"></div>
     </div>
 
   </body>

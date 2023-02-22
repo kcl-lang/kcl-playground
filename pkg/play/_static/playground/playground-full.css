@@ -16,13 +16,11 @@ a {
 #about {
   padding: 5px;
   margin: 0;
-
-  position: absolute;
+  width: 800px;
+  position: relative;
   top: 50px;
-  bottom: 25%;
-  left: 0;
-  right: 0;
-
+  bottom: 55%;
+  padding: 10px;
 }
 #wrap {
   background-color: #263238;
@@ -66,18 +64,18 @@ a {
   color: #fff;
 }
 #output {
-  position: absolute;
-  top: 75%;
+  position: relative;
+  top: 50px;
   bottom: 0;
-  left: 0;
+  left: 30px;
   right: 0;
-  padding: 8px;
+  padding: 10px;
 }
 #output .system, #output .loading {
   color: #555;
 }
 #output .stderr, #output .error {
-  color: #900;
+  color: rgb(221, 30, 30);
 }
 #output pre {
   margin: 0;
@@ -120,6 +118,7 @@ a {
 input[type=button],
 #importsBox {
   height: 30px;
+  width: 100px;
   font-size: 16px;
   font-family: Helvetica, Arial, sans-serif;
   color: #fff;
@@ -653,4 +652,9 @@ span.CodeMirror-selectedtext { background: none; }
 .cm-s-monokai .CodeMirror-matchingbracket {
   text-decoration: underline;
   color: white !important;
+}
+#code-editor {
+  display: flex;
+  justify-content:left;
+  height: 100%
 }
