@@ -130,10 +130,6 @@ function PlaygroundOutput(el) {
     if (write.Kind == 'stdout' || write.Kind == 'stderr')
       cl = write.Kind;
 
-    var m = write.Body;
-    if (write.Kind == 'end')
-      m = '\nProgram exited' + (m?(': '+m):'.');
-
     if (m.indexOf('IMAGE:') === 0) {
       // TODO(adg): buffer all writes before creating image
       var url = 'data:image/png;base64,' + m.substr(6);

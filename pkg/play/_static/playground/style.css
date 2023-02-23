@@ -63,7 +63,8 @@ a {
   float: right;
 
   background-color: #222;
-  color: #fff;
+  color: #292;
+  display: inline;
 }
 #output {
   position: absolute;
@@ -72,6 +73,7 @@ a {
   left: 0;
   right: 0;
   padding: 8px;
+  display: inline;
 }
 #output .system, #output .loading {
   color: #555;
@@ -81,6 +83,7 @@ a {
 }
 #output pre {
   margin: 0;
+  display:inline;
 }
 #banner {
   position: absolute;
@@ -186,4 +189,8 @@ input[type=button]:hover {
   height: 100%;
   font-family: 'Go', 'Inconsolata', monospace;
   font-size: 11pt;
+  display: inline;
+}
+.div-inline {
+  display: inline;
 }
