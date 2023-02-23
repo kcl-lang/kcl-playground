@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"path/filepath"
 
 	"github.com/gin-gonic/gin"
 
@@ -48,8 +49,14 @@ func (p *WebServer) compileAndRun(req *Request) (*Response, error) {
 		return nil, fmt.Errorf("error creating temp directory: %v", err)
 	}
 	defer os.RemoveAll(tmpDir)
+	// Write kcl code in the temp file.
+	kFile := filepath.Join(tmpDir, "prog.k")
+	err = os.WriteFile(kFile, []byte(req.Body), 0666)
+	if err != nil {
+		return nil, err
+	}
 
-	result, err := kclvm.Run("prog.k", kclvm.WithCode(req.Body))
+	result, err := kclvm.Run(kFile)
 	if err != nil {
 		resp := &Response{Errors: err.Error()}
 		return resp, nil
