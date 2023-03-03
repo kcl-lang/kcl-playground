@@ -190,8 +190,9 @@ gopkg.in/yaml.v3 v3.0.0-20220512140231-539c8e751b99 h1:dbuHpmKjkDzSOMKAWl10QNlga
 gopkg.in/yaml.v3 v3.0.0-20220512140231-539c8e751b99/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=
 honnef.co/go/tools v0.0.0-20190102054323-c2f93a96b099/go.mod h1:rf3lG4BRIbNafJWhAfAdb/ePZxsR/4RtNHQocxwk9r4=
 honnef.co/go/tools v0.0.0-20190523083050-ea95bdfd59fc/go.mod h1:rf3lG4BRIbNafJWhAfAdb/ePZxsR/4RtNHQocxwk9r4=
-kusionstack.io/kcl-plugin v0.4.1-alpha2/go.mod h1:VgB7qXVbDGWFOh/qb/yXf75+UrliP5EPXOQUDqBCdAQ=
-kusionstack.io/kcl-plugin v0.4.2 h1:MyPmsNsdEawFA3MecpPQKllBA+j44wq8vGbZ/cL7Aw8=
-kusionstack.io/kcl-plugin v0.4.2/go.mod h1:VgB7qXVbDGWFOh/qb/yXf75+UrliP5EPXOQUDqBCdAQ=
-kusionstack.io/kclvm-go v0.4.3 h1:8Uim02VBYZYsphhNRjjo+CFJl1H/LVjiPfQ5HZdLVR4=
-kusionstack.io/kclvm-go v0.4.3/go.mod h1:cxsYIWWMiDk7mwWJMm6H9kzNNtoIpOQHgzJBZvHThzo=
+kusionstack.io/kcl-plugin v0.4.4 h1:Ke6SMbZ33qaR0mTCaZSVmVop+8Hk8UQK217z7ml97z8=
+kusionstack.io/kcl-plugin v0.4.4/go.mod h1:VgB7qXVbDGWFOh/qb/yXf75+UrliP5EPXOQUDqBCdAQ=
+kusionstack.io/kclvm-artifact-go v0.4.5 h1:PlCKpdeFExV4JNFQ2dRPZ9nrEL3HxVGyGvOlOLPwD+0=
+kusionstack.io/kclvm-artifact-go v0.4.5/go.mod h1:WI+NvDeMqu1AduJT119X7q8KQdYmKfv4Nq4OvZ1tAsI=
+kusionstack.io/kclvm-go v0.4.5-alpha.1 h1:Z9W47QObU3AifhDKiNu06JCP8iQ3tGt5ZrrRaPc9Do4=
+kusionstack.io/kclvm-go v0.4.5-alpha.1/go.mod h1:fZhG25z3XnjqaXePHsi5GgqVtl837g7NS/1EpbdV/58=

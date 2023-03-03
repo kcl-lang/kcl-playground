@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/boltdb/bolt v1.3.1
 	github.com/gin-gonic/gin v1.7.7
-	kusionstack.io/kclvm-go v0.4.3
+	kusionstack.io/kclvm-go v0.4.5-alpha.1
 )
 
 require (
@@ -34,5 +34,6 @@ require (
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20220512140231-539c8e751b99 // indirect
-	kusionstack.io/kcl-plugin v0.4.2 // indirect
+	kusionstack.io/kcl-plugin v0.4.4 // indirect
+	kusionstack.io/kclvm-artifact-go v0.4.5 // indirect
 )
