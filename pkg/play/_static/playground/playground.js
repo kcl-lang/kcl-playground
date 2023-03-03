@@ -337,7 +337,7 @@ kclPlaygroundOptions({});
               window.location = opts.shareRedirect + xhr.responseText;
             }
             if (shareURL) {
-              var path = "/p/" + xhr.responseText;
+              var path = "?id=" + xhr.responseText;
               var url = origin(window.location) + path;
               shareURL.show().val(url).focus().select();
 
