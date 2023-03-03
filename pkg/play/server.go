@@ -15,7 +15,7 @@ import (
 const maxSnippetSize = 64 * 1024
 
 type WebServer struct {
-	opt *Option
+	opts *Options
 
 	fs     fs.FS
 	static *gin.Engine
@@ -39,17 +39,17 @@ func getStaticFS() fs.FS {
 	return fs
 }
 
-func NewWebServer(opt *Option) *WebServer {
-	if opt == nil {
-		opt = &Option{}
+func NewWebServer(opts *Options) *WebServer {
+	if opts == nil {
+		opts = &Options{}
 	}
 
-	if opt.AllowShare && opt.DatabaseFile == "" {
-		opt.DatabaseFile = "kcl-play.db"
+	if opts.AllowShare && opts.DatabaseFile == "" {
+		opts.DatabaseFile = "kcl-play.db"
 	}
 
 	p := &WebServer{
-		opt:    opt,
+		opts:   opts,
 		fs:     getStaticFS(),
 		static: gin.Default(),
 		router: gin.Default(),
@@ -73,7 +73,7 @@ func NewWebServer(opt *Option) *WebServer {
 func (p *WebServer) Run(addr string) error {
 	return http.ListenAndServe(addr,
 		http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			if p.opt.PlayMode {
+			if p.opts.PlayMode {
 				if r.URL.Path == "/" || r.URL.Path == "/index.html" {
 					p.router.ServeHTTP(w, r)
 					return

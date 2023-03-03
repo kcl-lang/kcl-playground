@@ -15,7 +15,7 @@ import (
 )
 
 func (p *WebServer) initShareHandler() {
-	if !p.opt.AllowShare {
+	if !p.opts.AllowShare {
 		return
 	}
 
@@ -24,7 +24,7 @@ func (p *WebServer) initShareHandler() {
 	})
 
 	var err error
-	p.db, err = bolt.Open(p.opt.DatabaseFile, 0600, nil)
+	p.db, err = bolt.Open(p.opts.DatabaseFile, 0600, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -69,7 +69,7 @@ func (p *WebServer) createBucket(name []byte) error {
 }
 
 func (p *WebServer) shareHandler(w http.ResponseWriter, r *http.Request) {
-	if !p.opt.AllowShare || r.Method != "POST" {
+	if !p.opts.AllowShare || r.Method != "POST" {
 		http.Error(w, "Forbidden", http.StatusForbidden)
 		return
 	}
@@ -103,7 +103,7 @@ func (p *WebServer) shareHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Access-Control-Allow-Methods", "POST")
-	w.Header().Set("Access-Control-Allow-Origin", p.opt.AllowOriginHeader)
+	w.Header().Set("Access-Control-Allow-Origin", p.opts.AllowOriginHeader)
 
 	fmt.Fprint(w, id)
 }

@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-type Option struct {
+type Options struct {
 	PlayMode          bool
 	AllowShare        bool
 	AllowOriginHeader string

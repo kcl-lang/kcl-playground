@@ -33,7 +33,7 @@ func (p *WebServer) initEditHandler() {
 }
 func (p *WebServer) EditHandler(w http.ResponseWriter, r *http.Request) {
 	snip := &Snippet{Body: []byte(edit_helloPlayground)}
-	edit_Template.Execute(w, &editData{snip, p.opt.AllowShare, string(kclvm.KclvmAbiVersion)})
+	edit_Template.Execute(w, &editData{snip, p.opts.AllowShare, string(kclvm.KclvmAbiVersion)})
 }
 
 //go:embed _edit.tmpl.html

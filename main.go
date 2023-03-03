@@ -17,7 +17,7 @@ import (
 func main() {
 	deploy_mode := flag.Bool("deploy", false, "Whether is deploy mode")
 	flag.Parse()
-	opt := play.Option{
+	opt := play.Options{
 		PlayMode:   true,
 		AllowShare: false,
 	}

@@ -2,7 +2,7 @@
 
 package play
 
-func Run(addr string, opt *Option) error {
-	s := NewWebServer(opt)
+func Run(addr string, opts *Options) error {
+	s := NewWebServer(opts)
 	return s.Run(addr)
 }
