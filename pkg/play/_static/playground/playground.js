@@ -338,7 +338,7 @@ kclPlaygroundOptions({});
             }
             if (shareURL) {
               var path = "?id=" + xhr.responseText;
-              var url = origin(window.location) + path;
+              var url = origin(window.location) + "/-/play/index.html" + path;
               shareURL.show().val(url).focus().select();
 
               if (rewriteHistory) {
