@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/boltdb/bolt v1.3.1
 	github.com/gin-gonic/gin v1.7.7
-	kusionstack.io/kclvm-go v0.4.5-alpha.1
+	kusionstack.io/kclvm-go v0.4.5-alpha.1.0.20230301090626-7de90d532286
 )
 
 require (
