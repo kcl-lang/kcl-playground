@@ -10,7 +10,7 @@ COPY . .
 RUN GOOS=linux GOARCH=amd64 go build -o kcl-playground
 
 
-FROM kusionstack/kusion:v0.7.2
+FROM kusionstack/kclvm
 
 WORKDIR /app
 

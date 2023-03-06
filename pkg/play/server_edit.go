@@ -7,6 +7,7 @@ import (
 	"html/template"
 	"net/http"
 
+	"github.com/boltdb/bolt"
 	"github.com/gin-gonic/gin"
 	"kusionstack.io/kclvm-go"
 )
@@ -32,16 +33,33 @@ func (p *WebServer) initEditHandler() {
 	})
 }
 func (p *WebServer) EditHandler(w http.ResponseWriter, r *http.Request) {
-	snip := &Snippet{Body: []byte(edit_helloPlayground)}
-	edit_Template.Execute(w, &editData{snip, p.opt.AllowShare, string(kclvm.KclvmAbiVersion)})
+	editTemplate.Execute(w, &editData{p.getSnippet(w, r), p.opts.AllowShare, string(kclvm.KclvmAbiVersion)})
+}
+
+func (p *WebServer) getSnippet(w http.ResponseWriter, r *http.Request) *Snippet {
+	var snip *Snippet
+	// Retrieve via the parameter id
+	if r.Method == "GET" {
+		p.db.View(func(tx *bolt.Tx) error {
+			data := tx.Bucket(p.bucketSnippets).Get([]byte(r.FormValue("id")))
+			if data != nil {
+				snip = &Snippet{Body: data}
+			}
+			return nil
+		})
+	}
+	if snip == nil {
+		snip = &defaultSnippet
+	}
+	return snip
 }
 
 //go:embed _edit.tmpl.html
-var edit_tmpl string
+var editTemplateString string
 
-var edit_Template = template.Must(template.New("playground/index.html").Parse(edit_tmpl))
+var editTemplate = template.Must(template.New("playground/index.html").Parse(editTemplateString))
 
-const edit_helloPlayground = `apiVersion = "apps/v1"
+const defaultCode = `apiVersion = "apps/v1"
 kind = "Deployment"
 metadata = {
     name = "nginx"
@@ -60,3 +78,5 @@ spec = {
     ]
 }
 `
+
+var defaultSnippet = Snippet{Body: []byte(defaultCode)}

@@ -17,12 +17,12 @@ import (
 func main() {
 	deploy_mode := flag.Bool("deploy", false, "Whether is deploy mode")
 	flag.Parse()
-	opt := play.Option{
+	opts := play.Options{
 		PlayMode:   true,
-		AllowShare: false,
+		AllowShare: true,
 	}
 	if *deploy_mode {
-		play.Run(":80", &opt)
+		play.Run(":80", &opts)
 	} else {
 		addr := "localhost:2023"
 		fmt.Printf("listen at http://%s\n", addr)
@@ -30,7 +30,7 @@ func main() {
 			time.Sleep(time.Second * 2)
 			openBrowser(addr)
 		}()
-		play.Run(addr, &opt)
+		play.Run(addr, &opts)
 	}
 }
 

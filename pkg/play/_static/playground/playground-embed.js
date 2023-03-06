@@ -61,7 +61,7 @@ function playgroundEmbed(opts) {
           return;
         }
         if (embedHTML) {
-          var path = "/p/" + xhr.responseText;
+          var path = "?id=" + xhr.responseText;
           var url = origin(window.location) + path;
           if (embed.prop('checked')){
             url = "<iframe src=\"" + url + "\" frameborder=\"0\" style=\"width: 100%; height: 100%\"><a href=\"" + url + "\">see this code in " + window.location.host + "</a></iframe>";
