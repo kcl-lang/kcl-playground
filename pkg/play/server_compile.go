@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/acarl005/stripansi"
 	"github.com/gin-gonic/gin"
 
 	"kusionstack.io/kclvm-go"
@@ -58,7 +59,7 @@ func (p *WebServer) compileAndRun(req *Request) (*Response, error) {
 
 	result, err := kclvm.Run(kFile)
 	if err != nil {
-		resp := &Response{Errors: err.Error()}
+		resp := &Response{Errors: stripansi.Strip(err.Error())}
 		return resp, nil
 	}
 
