@@ -3,9 +3,10 @@ module kusionstack.io/kcl-playground
 go 1.17
 
 require (
+	github.com/acarl005/stripansi v0.0.0-20180116102854-5a71ef0e047d
 	github.com/boltdb/bolt v1.3.1
 	github.com/gin-gonic/gin v1.7.7
-	kusionstack.io/kclvm-go v0.4.5-alpha.1.0.20230301090626-7de90d532286
+	kusionstack.io/kclvm-go v0.4.6
 )
 
 require (
@@ -24,6 +25,7 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421 // indirect
 	github.com/modern-go/reflect2 v0.0.0-20180701023420-4b7aa43c6742 // indirect
+	github.com/powerman/rpc-codec v1.2.2 // indirect
 	github.com/ugorji/go/codec v1.1.7 // indirect
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9 // indirect
 	golang.org/x/net v0.0.0-20201021035429-f5854403a974 // indirect
@@ -34,6 +36,5 @@ require (
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20220512140231-539c8e751b99 // indirect
-	kusionstack.io/kcl-plugin v0.4.4 // indirect
-	kusionstack.io/kclvm-artifact-go v0.4.5 // indirect
+	kusionstack.io/kclvm-artifact-go v0.4.6 // indirect
 )
