@@ -1,12 +1,12 @@
 module kusionstack.io/kcl-playground
 
-go 1.17
+go 1.18
 
 require (
 	github.com/acarl005/stripansi v0.0.0-20180116102854-5a71ef0e047d
 	github.com/boltdb/bolt v1.3.1
 	github.com/gin-gonic/gin v1.7.7
-	kusionstack.io/kclvm-go v0.4.6
+	kusionstack.io/kclvm-go v0.4.7-0.20230418083154-e5ebe9811d76
 )
 
 require (
@@ -28,13 +28,13 @@ require (
 	github.com/powerman/rpc-codec v1.2.2 // indirect
 	github.com/ugorji/go/codec v1.1.7 // indirect
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9 // indirect
-	golang.org/x/net v0.0.0-20201021035429-f5854403a974 // indirect
-	golang.org/x/sys v0.0.0-20220503163025-988cb79eb6c6 // indirect
-	golang.org/x/text v0.3.3 // indirect
+	golang.org/x/net v0.9.0 // indirect
+	golang.org/x/sys v0.7.0 // indirect
+	golang.org/x/text v0.9.0 // indirect
 	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013 // indirect
 	google.golang.org/grpc v1.46.0 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20220512140231-539c8e751b99 // indirect
-	kusionstack.io/kclvm-artifact-go v0.4.6 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
+	kusionstack.io/kclvm-artifact-go v0.4.7-0.20230418081720-4863d13f80d1 // indirect
 )
