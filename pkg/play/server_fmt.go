@@ -19,18 +19,8 @@ func (p *WebServer) initFmtHandler() {
 }
 
 func (p *WebServer) fmtHandler(w http.ResponseWriter, r *http.Request) {
-	var (
-		in  = []byte(r.FormValue("body"))
-		err error
-	)
 
-	if len(in) > maxSnippetSize {
-		w.WriteHeader(http.StatusInternalServerError)
-		fmt.Fprintln(w, "Compile server error.")
-		return
-	}
-
-	resp, err := p.fmtCode(in)
+	resp, err := p.fmtCode([]byte(r.FormValue("body")))
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
