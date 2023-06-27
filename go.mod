@@ -6,7 +6,7 @@ require (
 	github.com/acarl005/stripansi v0.0.0-20180116102854-5a71ef0e047d
 	github.com/boltdb/bolt v1.3.1
 	github.com/gin-gonic/gin v1.7.7
-	kusionstack.io/kclvm-go v0.5.0-alpha.1.0.20230525024849-173fe8a26741
+	kusionstack.io/kclvm-go v0.5.0-alpha.4
 )
 
 require (
@@ -16,6 +16,7 @@ require (
 	github.com/go-playground/locales v0.13.0 // indirect
 	github.com/go-playground/universal-translator v0.17.0 // indirect
 	github.com/go-playground/validator/v10 v10.4.1 // indirect
+	github.com/gofrs/flock v0.8.1 // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/golang/snappy v0.0.3 // indirect
 	github.com/json-iterator/go v1.1.9 // indirect
@@ -36,5 +37,5 @@ require (
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	kusionstack.io/kclvm-artifact-go v0.5.0-alpha.1 // indirect
+	kusionstack.io/kclvm-artifact-go v0.5.0-alpha.4 // indirect
 )
