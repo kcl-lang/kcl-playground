@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"kusionstack.io/kcl-playground/pkg/play"
+	"kcl-lang.io/kcl-playground/pkg/play"
 )
 
 func main() {
