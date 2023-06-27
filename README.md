@@ -1,6 +1,6 @@
 # KCL Playground
 
-- `go get kusionstack.io/kcl-playground`
+- `go get kcl-lang.io/kcl-playground`
 - `kcl-playground` or `go run main.go`
 
 ![](screenshot.jpg)

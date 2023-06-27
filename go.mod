@@ -1,4 +1,4 @@
-module kusionstack.io/kcl-playground
+module kcl-lang.io/kcl-playground
 
 go 1.18
 
