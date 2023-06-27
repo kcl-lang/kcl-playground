@@ -6,7 +6,7 @@ require (
 	github.com/acarl005/stripansi v0.0.0-20180116102854-5a71ef0e047d
 	github.com/boltdb/bolt v1.3.1
 	github.com/gin-gonic/gin v1.7.7
-	kusionstack.io/kclvm-go v0.5.0-alpha.3
+	kusionstack.io/kclvm-go v0.5.0-alpha.4
 )
 
 require (
@@ -37,5 +37,5 @@ require (
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	kusionstack.io/kclvm-artifact-go v0.5.0-alpha.3 // indirect
+	kusionstack.io/kclvm-artifact-go v0.5.0-alpha.4 // indirect
 )
