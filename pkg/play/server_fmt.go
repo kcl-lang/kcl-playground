@@ -9,7 +9,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"kusionstack.io/kclvm-go/pkg/tools/format"
+	"kcl-lang.io/kcl-go/pkg/tools/format"
 )
 
 func (p *WebServer) initFmtHandler() {
