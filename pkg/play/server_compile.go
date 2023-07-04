@@ -13,7 +13,7 @@ import (
 	"github.com/acarl005/stripansi"
 	"github.com/gin-gonic/gin"
 
-	"kusionstack.io/kclvm-go"
+	"kcl-lang.io/kcl-go"
 )
 
 func (p *WebServer) initCompileHandler() {

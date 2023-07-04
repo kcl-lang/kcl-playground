@@ -9,7 +9,7 @@ import (
 
 	"github.com/boltdb/bolt"
 	"github.com/gin-gonic/gin"
-	"kusionstack.io/kclvm-go"
+	"kcl-lang.io/kcl-go"
 )
 
 func (p *WebServer) initEditHandler() {
