@@ -1,0 +1,5 @@
+strict digraph {
+  kcl_playground_dev__plutolang_pluto_Website_kcl_playground [label="<<@plutolang/pluto.Website>>\nkcl-playground"];
+  kcl_playground_dev__plutolang_pluto_Router_router [label="<<@plutolang/pluto.Router>>\nrouter"];
+  kcl_playground_dev__plutolang_pluto_Router_router -> router_0_get_1_fn [label="GET path:\"/-/play/compile\",fn:router_0_get_1_fn",color="black"];
+}

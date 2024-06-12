@@ -1,0 +1,51 @@
+resources:
+- id: kcl_playground_dev__plutolang_pluto_Website_kcl_playground
+  name: kcl-playground
+  type: '@plutolang/pluto.Website'
+  parameters:
+  - index: 0
+    name: path
+    type: text
+    value: '"./website"'
+  - index: 1
+    name: name
+    type: text
+    value: '"kcl-playground"'
+  - index: 2
+    name: opts
+    type: text
+    value: undefined
+- id: kcl_playground_dev__plutolang_pluto_Router_router
+  name: router
+  type: '@plutolang/pluto.Router'
+  parameters:
+  - index: 0
+    name: name
+    type: text
+    value: '"router"'
+  - index: 1
+    name: opts
+    type: text
+    value: undefined
+closures:
+- id: router_0_get_1_fn
+  path: >-
+    /Users/lingzhi/_Code/KCLOpenSource/kcl-playground/kcl-playground/.pluto/dev/closures/router_0_get_1_fn
+relationships:
+- from:
+    id: kcl_playground_dev__plutolang_pluto_Router_router
+    type: resource
+  to:
+  - id: router_0_get_1_fn
+    type: closure
+  type: Create
+  operation: get
+  parameters:
+  - index: 0
+    name: path
+    type: text
+    value: '"/-/play/compile"'
+  - index: 1
+    name: fn
+    type: closure
+    value: router_0_get_1_fn
