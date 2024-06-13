@@ -5,6 +5,7 @@ import kcl_lib.api as kcl_api
 website = Website("./website", "kcl-playground")
 router = Router("router")
 
+website.addEnv("BACKEND_URL", router.url())
 
 def run_code(code: str) -> kcl_api.ExecProgram_Result:
     args = kcl_api.ExecProgram_Args(k_filename_list=["test.k"], k_code_list=[code])
@@ -14,7 +15,7 @@ def run_code(code: str) -> kcl_api.ExecProgram_Result:
 
 
 def compile_handler(req: HttpRequest) -> HttpResponse:
-    code = req.body
+    code = req.body["body"]
     result = run_code(code)
     if result.err_message:
         return HttpResponse(status_code=200, body=json.dumps({
@@ -29,4 +30,4 @@ def compile_handler(req: HttpRequest) -> HttpResponse:
         }))
 
 
-router.get("/-/play/compile", compile_handler)
+router.post("/-/play/compile", compile_handler)

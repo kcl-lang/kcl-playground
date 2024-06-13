@@ -4,6 +4,7 @@
     <title>KCL Playground</title>
     <link rel="stylesheet" href="/static/playground/playground-full.css">
 
+    <script src="pluto.js"></script>
     <script src="/static/playground/jquery/1.8.2/jquery.min.js"></script>
     <script src="/static/playground/playground-full.js"></script>
 
@@ -86,7 +87,24 @@
     </div>
     <div id="code-editor">
       <div id="wrap">
-        <textarea itemprop="description" id="code" name="code" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">{{printf "%s" .Snippet.Body}}</textarea>
+        <textarea itemprop="description" id="code" name="code" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false">apiVersion = "apps/v1"
+kind = "Deployment"
+metadata = {
+    name = "nginx"
+    labels.app = "nginx"
+}
+spec = {
+    replicas = 3
+    selector.matchLabels = metadata.labels
+    template.metadata.labels = metadata.labels
+    template.spec.containers = [
+        {
+            name = metadata.name
+            image = "${metadata.name}:1.14.2"
+            ports = [{ containerPort = 80 }]
+        }
+    ]
+}</textarea>
       </div>
       <div id="output"></div>
     </div>

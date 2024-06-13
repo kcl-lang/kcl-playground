@@ -2,6 +2,19 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+function getBackendUrl() {
+  var backendUrl = window.plutoEnv.BACKEND_URL;
+  if (/http:\/\/localhost/g.test(backendUrl)) {
+    var parts = backendUrl.split(":");
+    var port = parts[parts.length - 1];
+
+    var protocol = window.location.protocol;
+    var host = window.location.hostname;
+    backendUrl = `${protocol}//${host}:${port}`;
+  }
+  return backendUrl;
+}
+
 function HTTPTransport() {
   'use strict';
 
@@ -17,12 +30,12 @@ function HTTPTransport() {
       }
       var e = events.shift();
       if (e.Delay === 0) {
-        output({Kind: 'stdout', Body: e.Message});
+        output({Kind: 'stdout', Body: e.message});
         next();
         return;
       }
       timeout = setTimeout(function() {
-        output({Kind: 'stdout', Body: e.Message});
+        output({Kind: 'stdout', Body: e.message});
         next();
       }, e.Delay / 1000000);
     }
@@ -46,7 +59,7 @@ function HTTPTransport() {
       seq++;
       var cur = seq;
       var playing;
-      $.ajax(playgroundOptions.compileURL, {
+      $.ajax(getBackendUrl() + playgroundOptions.compileURL, {
         type: 'POST',
         data: {'version': 2, 'body': body},
         dataType: 'json',
@@ -58,7 +71,7 @@ function HTTPTransport() {
             error(output, data.Errors);
             return;
           }
-          playing = playback(output, data.Events);
+          playing = playback(output, data.events);
         },
         error: function() {
           error(output, 'Error communicating with remote server.');
@@ -129,6 +142,11 @@ function PlaygroundOutput(el) {
     var cl = 'system';
     if (write.Kind == 'stdout' || write.Kind == 'stderr')
       cl = write.Kind;
+    
+    var m = write.Body;
+    if (!m) {
+      return;
+    }
 
     if (m.indexOf('IMAGE:') === 0) {
       // TODO(adg): buffer all writes before creating image
@@ -292,7 +310,7 @@ kclPlaygroundOptions({});
       loading();
       var data = {"body": body()};
       data["imports"] = "true";
-      $.ajax(playgroundOptions.fmtURL, {
+      $.ajax(getBackendUrl() + playgroundOptions.fmtURL, {
         data: data,
         type: "POST",
         dataType: "json",
@@ -321,7 +339,7 @@ kclPlaygroundOptions({});
         if (sharing) return;
         sharing = true;
         var sharingData = body();
-        $.ajax(playgroundOptions.shareURL, {
+        $.ajax(getBackendUrl() + playgroundOptions.shareURL, {
           processData: false,
           data: sharingData,
           type: "POST",
