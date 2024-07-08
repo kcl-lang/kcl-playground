@@ -67,8 +67,8 @@ function HTTPTransport() {
           if (seq != cur) return;
           if (!data) return;
           if (playing != null) playing.Stop();
-          if (data.Errors) {
-            error(output, data.Errors);
+          if (data.errors) {
+            error(output, data.errors);
             return;
           }
           playing = playback(output, data.events);
@@ -315,10 +315,10 @@ kclPlaygroundOptions({});
         type: "POST",
         dataType: "json",
         success: function(data) {
-          if (data.Error) {
-            setError(data.Error);
+          if (data.error) {
+            setError(data.error);
           } else {
-            setBody(data.Body);
+            setBody(data.body);
             setError("");
           }
         }
