@@ -2,6 +2,19 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+function getBackendUrl() {
+  var backendUrl = window.plutoEnv.BACKEND_URL;
+  if (/http:\/\/localhost/g.test(backendUrl)) {
+    var parts = backendUrl.split(":");
+    var port = parts[parts.length - 1];
+
+    var protocol = window.location.protocol;
+    var host = window.location.hostname;
+    backendUrl = `${protocol}//${host}:${port}`;
+  }
+  return backendUrl;
+}
+
 function HTTPTransport() {
   'use strict';
 
@@ -17,12 +30,12 @@ function HTTPTransport() {
       }
       var e = events.shift();
       if (e.Delay === 0) {
-        output({Kind: 'stdout', Body: e.Message});
+        output({Kind: 'stdout', Body: e.message});
         next();
         return;
       }
       timeout = setTimeout(function() {
-        output({Kind: 'stdout', Body: e.Message});
+        output({Kind: 'stdout', Body: e.message});
         next();
       }, e.Delay / 1000000);
     }
@@ -46,7 +59,7 @@ function HTTPTransport() {
       seq++;
       var cur = seq;
       var playing;
-      $.ajax(playgroundOptions.compileURL, {
+      $.ajax(getBackendUrl() + playgroundOptions.compileURL, {
         type: 'POST',
         data: {'version': 2, 'body': body},
         dataType: 'json',
@@ -54,11 +67,11 @@ function HTTPTransport() {
           if (seq != cur) return;
           if (!data) return;
           if (playing != null) playing.Stop();
-          if (data.Errors) {
-            error(output, data.Errors);
+          if (data.errors) {
+            error(output, data.errors);
             return;
           }
-          playing = playback(output, data.Events);
+          playing = playback(output, data.events);
         },
         error: function() {
           error(output, 'Error communicating with remote server.');
@@ -129,6 +142,11 @@ function PlaygroundOutput(el) {
     var cl = 'system';
     if (write.Kind == 'stdout' || write.Kind == 'stderr')
       cl = write.Kind;
+    
+    var m = write.Body;
+    if (!m) {
+      return;
+    }
 
     if (m.indexOf('IMAGE:') === 0) {
       // TODO(adg): buffer all writes before creating image
@@ -169,6 +187,7 @@ var defaultOptions = {
   'compileURL': '/-/play/compile',
   'fmtURL': '/-/play/fmt',
   'shareURL': '/-/play/share',
+  'queryURL': '/-/play/query',
 };
 
 function kclPlaygroundOptions(opts) {
@@ -291,16 +310,33 @@ kclPlaygroundOptions({});
     function fmt() {
       loading();
       var data = {"body": body()};
-      data["imports"] = "true";
-      $.ajax(playgroundOptions.fmtURL, {
+      $.ajax(getBackendUrl() + playgroundOptions.fmtURL, {
         data: data,
         type: "POST",
         dataType: "json",
         success: function(data) {
-          if (data.Error) {
-            setError(data.Error);
+          if (data.error) {
+            setError(data.error);
           } else {
-            setBody(data.Body);
+            setBody(data.body);
+            setError("");
+          }
+        }
+      });
+    }
+
+    function query(id) {
+      loading();
+      var data = {"id": id};
+      $.ajax(getBackendUrl() + playgroundOptions.queryURL, {
+        data: data,
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+          if (data.error) {
+            setError(data.error);
+          } else if (data.body) {
+            setBody(data.body);
             setError("");
           }
         }
@@ -311,6 +347,12 @@ kclPlaygroundOptions({});
     $(opts.fmtEl).click(fmt);
     editor.on("change", run);
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    if (id) {
+       query(id)
+    }
+
     if (opts.shareEl !== null && (opts.shareURLEl !== null || opts.shareRedirect !== null)) {
       var shareURL;
       if (opts.shareURLEl) {
@@ -320,25 +362,21 @@ kclPlaygroundOptions({});
       $(opts.shareEl).click(function() {
         if (sharing) return;
         sharing = true;
-        var sharingData = body();
-        $.ajax(playgroundOptions.shareURL, {
-          processData: false,
-          data: sharingData,
+        var data = {"body": body()};
+        $.ajax(getBackendUrl() + playgroundOptions.shareURL, {
+          data: data,
           type: "POST",
-          complete: function(xhr) {
+          dataType: "json",
+          success: function(data) {
             sharing = false;
-            if (xhr.status != 200) {
-              alert("Server error; try again.");
-              return;
-            }
             if (opts.shareOpenNewWindow) {
-              window.open(opts.shareRedirect + xhr.responseText, '_blank');
+              window.open(opts.shareRedirect + data.body, '_blank');
             } else if (opts.shareRedirect) {
-              window.location = opts.shareRedirect + xhr.responseText;
+              window.location = opts.shareRedirect + data.body;
             }
             if (shareURL) {
-              var path = "?id=" + xhr.responseText;
-              var url = origin(window.location) + "/-/play/index.html" + path;
+              var path = "?id=" + data.body;
+              var url = origin(window.location) + path;
               shareURL.show().val(url).focus().select();
 
               if (rewriteHistory) {

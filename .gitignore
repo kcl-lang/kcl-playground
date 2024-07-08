@@ -19,3 +19,7 @@ zz_*
 **/target/
 **/.DS_Store
 **/.vscode
+node_modules
+
+# pluto
+.pluto/**/*

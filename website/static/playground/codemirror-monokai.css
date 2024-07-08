@@ -34,3 +34,8 @@
   text-decoration: underline;
   color: white !important;
 }
+#code-editor {
+  display: flex;
+  justify-content:left;
+  height: 100%
+}
