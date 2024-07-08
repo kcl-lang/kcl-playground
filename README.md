@@ -19,7 +19,7 @@ pluto run
 
 ## Screenshot
 
-![](screenshot.jpg)
+![](screenshot.png)
 
 ## License
 
