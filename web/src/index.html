@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no,address=no,email=no">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <script src="pluto.js"></script>
+  <title>KCL Programming Language Playground</title>
+  <style>
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+    .container {
+        display: flex;
+        height: 100%;
+    }
+    .editor, .console {
+        flex: 1;
+        height: 100%;
+        overflow: auto;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+    .console {
+        background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div>
+        <ul>
+          <li><button class="button button--primary" id="run"><x-icon icon="play" size="16" color="#fff"></x-icon> Run</button></li>
+          <li><button class="button button--default" id="format"><x-icon icon="sort" size="14" color="#999"></x-icon> Format</button></li>
+          <li><button class="button button--default tooltip-container" id="share"><x-icon icon="share" size="14" color="#999"></x-icon> Share<span class="tooltip">Shareable link now in address bar!!</span></button></li>
+          <li><a class="button button--default" href="https://www.kcl-lang.io" target="_blank"><x-icon icon="doc" size="14" color="#999"></x-icon> Documents</a></li>
+          <li>
+            <div class="select">
+              <select id="snippet">
+                <option value="">Select...</option>
+              </select>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="editor">
+        <textarea id="source"></textarea>
+      </div>
+
+      <div class="console">
+        <div class="console__title">
+          <div>
+            <x-icon icon="comment" size="14" color="#999"></x-icon> RESULT
+          </div>
+          <div>
+            <time id="last-updated"></time></div>
+          </div>
+        <div class="console__body" id="output-container">
+          <pre><code id="output"></code></pre>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

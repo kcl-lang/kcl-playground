@@ -5,8 +5,8 @@
   --color-gray-light: #f3f3f3;
   --color-gray-lighter: #f9f9f9;
 
-  --color-primary: #e965a8;
-  --color-primary-gradient: linear-gradient(to right, #f72cb8, #f9a6b6);
+  --color-primary: #2fc1c4;
+  --color-primary-gradient: linear-gradient(to right, #2fc1c4, #3caf90);
 
   --color-text-base: var(--color-gray-darker);
   --color-text-light: var(--color-gray-dark);

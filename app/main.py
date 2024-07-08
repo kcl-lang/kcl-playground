@@ -1,15 +1,13 @@
 import json
 import re
-import hashlib
-from pluto_client import Website, KVStore, Router, HttpRequest, HttpResponse
-import kcl_lib.api as kcl_api
 import tempfile
+from pluto_client import Website, Router, HttpRequest, HttpResponse
+import kcl_lib.api as kcl_api
 
 color_pattern = re.compile(r"\x1b\[[0-9;]+m")
 api = kcl_api.API()
 router = Router("router")
-store = KVStore("store")
-website = Website("./website", "kcl-playground")
+website = Website("./web/dist", "kcl-playground")
 website.addEnv("BACKEND_URL", router.url())
 
 
@@ -37,7 +35,7 @@ def compile_handler(req: HttpRequest) -> HttpResponse:
             status_code=200,
             body=json.dumps(
                 {
-                    "errors": color_pattern.sub("", str(err).removeprefix("ERROR:")),
+                    "error": color_pattern.sub("", str(err).removeprefix("ERROR:")),
                 }
             ),
         )
@@ -46,23 +44,14 @@ def compile_handler(req: HttpRequest) -> HttpResponse:
             status_code=200,
             body=json.dumps(
                 {
-                    "errors": color_pattern.sub("", result.err_message),
+                    "error": color_pattern.sub("", result.err_message),
                 }
             ),
         )
     else:
         return HttpResponse(
             status_code=200,
-            body=json.dumps(
-                {
-                    "events": [
-                        {
-                            "message": result.yaml_result,
-                            "kind": "stdout",
-                        }
-                    ],
-                }
-            ),
+            body=json.dumps({"body": result.yaml_result}),
         )
 
 
@@ -72,21 +61,5 @@ def fmt_handler(req: HttpRequest) -> HttpResponse:
     return HttpResponse(status_code=200, body=json.dumps({"body": result}))
 
 
-def share_handler(req: HttpRequest) -> HttpResponse:
-    code = req.body["body"]
-    sha1 = hashlib.sha1()
-    sha1.update(code.encode("utf-8"))
-    id = sha1.hexdigest()
-    store.set(id, code)
-    return HttpResponse(status_code=200, body=json.dumps({"body": id}))
-
-
-def query_handler(req: HttpRequest) -> HttpResponse:
-    id = req.query["id"]
-    return HttpResponse(status_code=200, body=json.dumps({"body": store.get(id)}))
-
-
 router.post("/-/play/compile", compile_handler)
 router.post("/-/play/fmt", fmt_handler)
-router.post("/-/play/share", share_handler)
-router.get("/-/play/query", query_handler)

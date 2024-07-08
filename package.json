@@ -1,7 +1,8 @@
 {
   "name": "kcl-playground",
-  "version": "0.0.0",
+  "version": "0.9.0",
   "scripts": {
+    "dev": "pluto run",
     "test:dev": "pluto test --sim",
     "test:prod": "pluto test",
     "deploy": "pluto deploy",

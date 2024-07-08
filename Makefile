@@ -1,4 +1,5 @@
 run:
+	cd web && npm run build
 	pluto run
 
 fmt:
