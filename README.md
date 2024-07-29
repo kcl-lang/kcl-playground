@@ -14,7 +14,7 @@
 python -m pip install -r requirements
 npm install
 npm install -g pluto
-pluto run
+make
 ```
 
 ## Screenshot
