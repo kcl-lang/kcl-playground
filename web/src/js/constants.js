@@ -38,7 +38,6 @@ spec = {
   {
     label: 'Debugging values',
     value: `print("Output values")
-print(true, false, 100)
 `,
   },
 
