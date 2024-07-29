@@ -51,7 +51,7 @@ def compile_handler(req: HttpRequest) -> HttpResponse:
     else:
         return HttpResponse(
             status_code=200,
-            body=json.dumps({"body": result.yaml_result}),
+            body=json.dumps({"body": result.log_message + result.yaml_result}),
         )
 
 
