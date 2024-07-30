@@ -17,6 +17,18 @@ npm install -g pluto
 make
 ```
 
+## Run
+
+```shell
+pluto run
+```
+
+## Deploy
+
+```shell
+pluto deploy
+```
+
 ## Screenshot
 
 ![](screenshot.png)
