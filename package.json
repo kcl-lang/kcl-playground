@@ -10,7 +10,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@plutolang/pluto-infra": "0.4.26",
+    "@plutolang/pluto-infra": "0.4.30",
     "@pulumi/pulumi": "^3.88.0",
     "@types/node": "^20",
     "typescript": "^5.2.2"
