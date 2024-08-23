@@ -11,7 +11,7 @@
 ## Quick Start
 
 ```shell
-python -m pip install -r requirements
+python3 -m pip install -U -r ./requirements.txt
 npm install
 npm install -g pluto
 make

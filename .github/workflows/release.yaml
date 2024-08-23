@@ -1,5 +1,3 @@
-# Reference from:
-# https://goreleaser.com/ci/actions/
 name: Release
 on:
   push:
