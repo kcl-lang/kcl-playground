@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "start": "webpack serve",
-    "build": "env NODE_ENV=production webpack-cli",
+    "build": "webpack-cli",
     "format": "prettier src/**/*.js src/**/*.css *.config.js --write",
     "deploy": "gh-pages -d dist",
     "predeploy": "yarn build"

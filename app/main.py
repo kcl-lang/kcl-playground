@@ -1,13 +1,22 @@
 import json
 import re
 import tempfile
-from pluto_client import Website, Router, HttpRequest, HttpResponse
+from pluto_client import (
+    Website,
+    WebsiteOptions,
+    Router,
+    RouterOptions,
+    HttpRequest,
+    HttpResponse,
+)
 import kcl_lib.api as kcl_api
 
 color_pattern = re.compile(r"\x1b\[[0-9;]+m")
 api = kcl_api.API()
-router = Router("router")
-website = Website("./web/dist", "kcl-playground")
+router = Router("router", RouterOptions(sim_host="0.0.0.0", sim_port="8000"))
+website = Website(
+    "./web/dist", "kcl-playground", WebsiteOptions(sim_host="0.0.0.0", sim_port="8001")
+)
 website.addEnv("BACKEND_URL", router.url())
 
 
