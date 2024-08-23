@@ -17,7 +17,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
       - name: Install dependencies
-        run: python -m pip install -r requirements
+        run: python3 -m pip install -r requirements
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
         with:
