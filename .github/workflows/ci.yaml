@@ -1,0 +1,27 @@
+name: CI
+on:
+  pull_request:
+    branches:
+     - main
+  push:
+    branches:
+     - main
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    container: 
+      image: plutolang/pluto
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: python -m pip install -r requirements
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          version: v0.11.2
+          install: true
+      - name: Test application
+        run: pluto run
