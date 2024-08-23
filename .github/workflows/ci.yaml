@@ -24,4 +24,4 @@ jobs:
       - name: Build web
         run: cd web && npm install && npm run build
       - name: Test
-        run: ./scripts/test2.sh
+        run: ./scripts/test.sh
