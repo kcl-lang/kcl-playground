@@ -31,7 +31,7 @@ const playgroundOptions = {
 
 function getBackendUrl() {
   var backendUrl = window.plutoEnv.BACKEND_URL;
-  if (/http:\/\/localhost/g.test(backendUrl)) {
+  if (/http:\/\/0.0.0.0/g.test(backendUrl)) {
     var parts = backendUrl.split(":");
     var port = parts[parts.length - 1];
 
