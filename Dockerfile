@@ -9,4 +9,6 @@ RUN cd web && npm install && npm run build
 RUN python3 -m pip install -U -r ./requirements.txt
 # Run
 CMD ["pluto", "run"]
-EXPOSE 9443
+EXPOSE 8080
+EXPOSE 8000
+EXPOSE 8001

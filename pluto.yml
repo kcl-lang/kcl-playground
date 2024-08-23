@@ -1,4 +1,3 @@
-configs: {}
 current: aws
 language: python
 stacks:
@@ -6,3 +5,7 @@ stacks:
     name: aws
     platformType: AWS
     provisionType: Pulumi
+
+configs:
+  simulator:
+    address: "0.0.0.0:8080"

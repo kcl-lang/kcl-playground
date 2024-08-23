@@ -21,7 +21,7 @@ PROJECT_NAME=$(grep '"name":' package.json | awk -F '"' '{print $4}')
 echo "Project name: $PROJECT_NAME"
 
 # Set environment variables
-PORT=$(lsof -Pan -p $PID1 -i | grep LISTEN | awk '{print $9}' | sed 's/.*://')
+PORT=8080
 export PLUTO_PROJECT_NAME=$PROJECT_NAME
 export PLUTO_STACK_NAME=local_run
 export PLUTO_PLATFORM_TYPE=Simulator
@@ -49,8 +49,7 @@ python3 -m pytest -s -q --no-header app
 
 # Execute tests within the app/main.py file
 print_separator "Executing tests within the app/main.py file"
-# TODO: pluto Website resource mock bugfix
-# python3 -m pytest -s -q --no-header app/main.py
+python3 -m pytest -s -q --no-header app/main.py
 
 # Cleanup
 kill $PID1

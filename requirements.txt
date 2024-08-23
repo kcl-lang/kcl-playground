@@ -1,2 +1,3 @@
 pluto_client
 kcl_lib==0.10.0b2
+requests
