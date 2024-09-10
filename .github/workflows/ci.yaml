@@ -1,29 +1,23 @@
-name: CI
+name: build
 on:
   pull_request:
-    branches:
+    branches: 
      - main
   push:
-    branches:
+    branches: 
      - main
-
 jobs:
-  test:
-    name: Test
+  build:
     runs-on: ubuntu-latest
-    container: 
-      image: plutolang/pluto
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-      - name: Install dependencies
-        run: |
-          apt update
-          apt install lsof
-          npm install
-          python3 -m pip install -r requirements.txt
-          python3 -m pip install pytest
-      - name: Build web
-        run: cd web && npm install && npm run build
-      - name: Test
-        run: ./scripts/test.sh
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: NPM install
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+        run: npm install
+      - name: NPM build
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+        run: npm run build

@@ -4,29 +4,24 @@
 
 ## Dependencies
 
-+ Docker
-+ Python 3.7+
 + Node.js
 
 ## Quick Start
 
 ```shell
-python3 -m pip install -U -r ./requirements.txt
 npm install
-npm install -g pluto
-make
 ```
 
 ## Run
 
 ```shell
-pluto run
+npm run start
 ```
 
-## Deploy
+## Build
 
 ```shell
-pluto deploy
+npm run build
 ```
 
 ## Screenshot
