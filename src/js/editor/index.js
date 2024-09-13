@@ -9,9 +9,6 @@ import './share';
 import './codemirror-kcl';
 import { load, invokeKCLRun, invokeKCLFmt } from "../module";
 
-const response = await fetch("kcl.wasm");
-const wasm = await response.arrayBuffer();
-const inst = await load({ data: wasm });
 const source = document.getElementById('source');
 const run = document.getElementById('run');
 const outputContainer = document.getElementById('output-container');
@@ -27,6 +24,11 @@ const editor = CodeMirror.fromTextArea(source, {
   lineWrapping: true,
   smartIndent: true,
 });
+editor.setValue("Loading KCL WASM module...");
+
+const response = await fetch("kcl.wasm");
+const wasm = await response.arrayBuffer();
+const inst = await load({ data: wasm });
 
 class Mutex {
   constructor() {
