@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.invokeKCLFmt = exports.invokeKCLRun = exports.load = void 0;
 const wasi_1 = require("@wasmer/wasi");
-const RUN_FUNCTION_NAME = "kcl_run";
+const RUN_FUNCTION_NAME = "kcl_run_with_log_message";
 const FMT_FUNCTION_NAME = "kcl_fmt";
 const RUNTIME_ERR_FUNCTION_NAME = "kcl_runtime_err";
 /**
