@@ -1,6 +1,6 @@
 {
   "name": "kcl-playground",
-  "version": "0.10.0",
+  "version": "0.10.2",
   "private": true,
   "scripts": {
     "start": "webpack serve",
