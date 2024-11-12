@@ -15,6 +15,13 @@
       margin: 0;
     }
 
+    .header .nav {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     .container {
       display: flex;
       height: 100%;
@@ -72,7 +79,7 @@
 <body>
   <main class="app">
     <header class="header">
-      <div>
+      <div class="nav">
         <ul>
           <li><button class="button button--primary" id="run"><x-icon icon="play" size="16" color="#fff"></x-icon>
               Run</button></li>
@@ -91,6 +98,7 @@
             </div>
           </li>
         </ul>
+        <a href="https://github.com/kcl-lang/kcl-playground" target="_blank"><x-icon icon="github" size="28" color="#000"></x-icon></a>
       </div>
     </header>
 
